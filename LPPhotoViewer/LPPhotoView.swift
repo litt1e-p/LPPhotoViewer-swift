@@ -17,7 +17,7 @@ protocol LPPhotoViewDelegate :NSObjectProtocol
 
 class LPPhotoView: UICollectionViewCell
 {
-    weak var photoViewDelegate : LPPhotoViewDelegate?
+    weak var photoViewDelegate: LPPhotoViewDelegate?
     
     var imageURL: NSURL? {
         didSet {

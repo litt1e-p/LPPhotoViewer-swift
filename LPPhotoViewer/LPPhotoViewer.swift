@@ -18,9 +18,12 @@ enum IndicatorType: Int
     case None, NumLabel, PageControl
 }
 
+let kLPPhotoViewNotifyName              = "kLPPhotoViewNotifyName"
+let kLPPhotoViewNotifyUserInfoIndexKey  = "kLPPhotoViewNotifyUserInfoIndexKey"
+let kLPPhotoViewNotifyUserInfoViewKey   = "kLPPhotoViewNotifyUserInfoViewKey"
 private let kLPPhotoViewReuseIdentifier = "kLPPhotoViewReuseIdentifier"
-private let kLPScreenWidth = UIScreen.mainScreen().bounds.size.width
-private let kLPScreenHeight = UIScreen.mainScreen().bounds.size.height
+private let kLPScreenWidth              = UIScreen.mainScreen().bounds.size.width
+private let kLPScreenHeight             = UIScreen.mainScreen().bounds.size.height
 
 class LPPhotoViewer: UIViewController
 {
@@ -136,6 +139,7 @@ extension LPPhotoViewer: UICollectionViewDataSource, LPPhotoViewDelegate
     }
     
     func photoViewWillClose(cell: LPPhotoView) {
+        NSNotificationCenter.defaultCenter().postNotificationName(kLPPhotoViewNotifyName, object: nil, userInfo: [kLPPhotoViewNotifyUserInfoIndexKey : currentIndex!, kLPPhotoViewNotifyUserInfoViewKey : cell])
         dismissViewControllerAnimated(true, completion: nil)
         statusBarState = .Show
     }
