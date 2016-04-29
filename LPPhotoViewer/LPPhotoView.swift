@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-protocol LPPhotoViewDelegate :NSObjectProtocol
+protocol LPPhotoViewDelegate: NSObjectProtocol
 {
     func photoViewWillClose(cell: LPPhotoView)
     func photoViewWillShow()

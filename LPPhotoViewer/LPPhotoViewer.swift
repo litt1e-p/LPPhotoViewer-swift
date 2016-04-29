@@ -18,6 +18,11 @@ enum IndicatorType: Int
     case None, NumLabel, PageControl
 }
 
+protocol LPPhotoViewerTransitionDelegate: NSObjectProtocol
+{
+    func genericTrantion(type: LPPhotoViewTransitionType) -> UIViewControllerAnimatedTransitioning?
+}
+
 let kLPPhotoViewNotifyName              = "kLPPhotoViewNotifyName"
 let kLPPhotoViewNotifyUserInfoIndexKey  = "kLPPhotoViewNotifyUserInfoIndexKey"
 let kLPPhotoViewNotifyUserInfoViewKey   = "kLPPhotoViewNotifyUserInfoViewKey"
@@ -27,6 +32,10 @@ private let kLPScreenHeight             = UIScreen.mainScreen().bounds.size.heig
 
 class LPPhotoViewer: UIViewController
 {
+    var customTransition: Bool = false
+    
+    weak var customTransitionDelegate: LPPhotoViewerTransitionDelegate?
+    
     var currentIndex: Int? {
         didSet {
             if indicatorType == .NumLabel {
@@ -48,6 +57,8 @@ class LPPhotoViewer: UIViewController
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        self.transitioningDelegate = self;
+        self.modalPresentationStyle = .Custom;
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,7 +100,7 @@ class LPPhotoViewer: UIViewController
         }
     }
     
-    private lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: PhotoViewerLayout())
+    private lazy var collectionView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: LPPhotoViewerLayout())
     
     private lazy var indicatorLabel: UILabel = {
         let lb             = UILabel(frame: CGRectMake(0, kLPScreenHeight - 30, kLPScreenWidth, 30))
@@ -145,11 +156,11 @@ extension LPPhotoViewer: UICollectionViewDataSource, LPPhotoViewDelegate
     }
     
     func photoViewWillShow() {
-        statusBarState = .Hidden
+        self.statusBarState = .Hidden
     }
 }
 
-class PhotoViewerLayout : UICollectionViewFlowLayout
+class LPPhotoViewerLayout : UICollectionViewFlowLayout
 {
     override func prepareLayout() {
         itemSize                                       = UIScreen.mainScreen().bounds.size
