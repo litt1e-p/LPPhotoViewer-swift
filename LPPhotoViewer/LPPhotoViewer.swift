@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 private enum StatusBarState: Int
 {
@@ -59,6 +60,10 @@ class LPPhotoViewer: UIViewController
         super.init(nibName: nil, bundle: nil)
         self.transitioningDelegate = self;
         self.modalPresentationStyle = .Custom;
+    }
+    
+    deinit {
+        coolDownMemory()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -157,6 +162,15 @@ extension LPPhotoViewer: UICollectionViewDataSource, LPPhotoViewDelegate
     
     func photoViewWillShow() {
         self.statusBarState = .Hidden
+    }
+    
+    override func didReceiveMemoryWarning() {
+        coolDownMemory()
+    }
+    
+    private func coolDownMemory() {
+        SDWebImageManager.sharedManager().cancelAll()
+        SDWebImageManager.sharedManager().imageCache.clearMemory()
     }
 }
 

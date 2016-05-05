@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import WebImage
 
 protocol LPPhotoViewDelegate: NSObjectProtocol
 {
@@ -23,12 +23,19 @@ class LPPhotoView: UICollectionViewCell
         didSet {
             reset()
             activity.startAnimating()
-            scrollView.imageView.kf_setImageWithURL(imageURL!, placeholderImage: nil, optionsInfo: nil, progressBlock: { (receivedSize, totalSize) in
+            
+            scrollView.imageView.sd_setImageWithURL(imageURL!, placeholderImage: nil, options: SDWebImageOptions.LowPriority, progress: { (receivedSize: Int, expectedSize: Int) in
                 
-                }) { (image, error, cacheType, imageURL) in
-                    self.activity.stopAnimating()
-                    self.scrollView.setImage(image!, size: image!.size)
+            }) { (image: UIImage!, error: NSError!, cacheType: SDImageCacheType, imageURL: NSURL!) in
+                guard error == nil else {print(error); return}
+                self.activity.stopAnimating()
+                self.scrollView.setImage(image!, size: image!.size)
+                if imageURL.absoluteString.hasSuffix(".gif") {
+                    SDWebImageManager.sharedManager().cancelAll()
+                    SDWebImageManager.sharedManager().imageCache.clearMemory()
+                }
             }
+            
         }
     }
     

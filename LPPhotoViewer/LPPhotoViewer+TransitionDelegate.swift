@@ -1,8 +1,8 @@
 //
 //  LPPhotoViewer+TransitionDelegate.swift
-//  LPPhotoViewer
+//  litt1e-p
 //
-//  Created by litt1e-p on 16/4/28.
+//  Created by paul on 16/4/28.
 //  Copyright © 2016年 litt1e-p. All rights reserved.
 //
 
