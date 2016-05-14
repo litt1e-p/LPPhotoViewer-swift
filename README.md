@@ -1,5 +1,5 @@
 # LPPhotoViewer-swift
-the simple photo browser rewrite in swift
+[LPPhotoViewer](https://github.com/litt1e-p/LPPhotoViewer) rewrite in swift
 
 # Notice
 
