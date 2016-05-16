@@ -45,7 +45,7 @@ class LPPhotoViewer: UIViewController
                 if CGRectEqualToRect(CGRectZero, pageControl.frame) {
                     pageControl.numberOfPages  = imgArr!.count;
                     let size = pageControl.sizeForNumberOfPages(imgArr!.count)
-                    pageControl.frame = CGRectMake(kScreenWidth / 2 - size.width / 2, kScreenHeight - size.height, size.width, size.height);
+                    pageControl.frame = CGRectMake(kLPScreenWidth / 2 - size.width / 2, kLPScreenHeight - size.height, size.width, size.height);
                 }
                 pageControl.currentPage = currentIndex!
             }
