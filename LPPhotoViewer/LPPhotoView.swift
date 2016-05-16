@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WebImage
+import SDWebImage
 
 protocol LPPhotoViewDelegate: NSObjectProtocol
 {
