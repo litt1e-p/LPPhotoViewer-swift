@@ -3,4 +3,6 @@
 
 # Installation
 
-**pod 'LPPhotoViewer-swift', '~> 0.0.1'**
+```swift
+pod 'LPPhotoViewer-swift', '~> 0.0.1'
+```
