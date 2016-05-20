@@ -6,3 +6,9 @@
 ```swift
 pod 'LPPhotoViewer-swift', '~> 0.0.1'
 ```
+
+# Release Notes
+
+- Ver 0.0.1
+
+`first release version`
