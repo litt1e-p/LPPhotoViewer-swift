@@ -1,0 +1,6 @@
+framework module Pods_LPPhotoViewer_swift_Sample {
+  umbrella header "Pods-LPPhotoViewer-swift-Sample-umbrella.h"
+
+  export *
+  module * { export * }
+}
