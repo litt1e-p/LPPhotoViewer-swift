@@ -1,2 +1,18 @@
 # LPPhotoViewer-swift
-the simple photo browser rewrite in swift
+[LPPhotoViewer](https://github.com/litt1e-p/LPPhotoViewer) rewrite in swift
+
+# Installation
+
+```swift
+pod 'LPPhotoViewer-swift', '~> 0.0.1'
+```
+
+# TODO
+
+- [ ] add pan gusture for dismiss
+
+# Release Notes
+
+- Ver 0.0.1
+
+`first release version`
