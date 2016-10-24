@@ -1,6 +1,9 @@
 # LPPhotoViewer-swift
 [LPPhotoViewer](https://github.com/litt1e-p/LPPhotoViewer) rewrite in swift
 
+# Additional
+Swift3 version is coming soon
+
 # Installation
 
 ```swift
